@@ -1,16 +1,12 @@
 const express = require('express');
-const index = require('./Router/index');
+const checklistRouter = require('./src/routes/Checklist');
+require('./Config/Database');
 
 const app = express();
+app.use(express.json());
+
 app.listen(3000, ()=>{
     console.log("o servidor foi iniciado");
-})
+});
 
-app.get('/',(req, res)=>{ 
-    res.send('<h1>Testanto o Express :D</h1>');
-})
-
-app.get('/json',(req, res)=>{
-    res.json({title: "Tarefa X", done: true});
-})
-
+app.use("/checklists", checklistRouter);
