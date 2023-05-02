@@ -31,6 +31,7 @@ router.get("/new", async(req, res)=>{
     }catch(error){
         res.status(500).render('pages/error', {errors: 'erro ao carregar um formulario'})
     }
+    
 })
 
 
