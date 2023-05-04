@@ -38,7 +38,7 @@ router.get("/new", async(req, res)=>{
 //RETORNA ALGUMA INFORMAÇÃO AO USUARIO
 router.get("/:id", async (req, res) => {
     try{
-        let checklist = await Checklist.findById(req.params.id); //<=== Encontrar por ID no banco de dados
+        let checklist = await Checklist.findById(req.params.id).populate('tasks');
         res.status(200).render("checklists/show", {checklist: checklist});
     }catch(error){
         res.status(422).render('pages/error', {error: 'Erro ao exibir as listas'});

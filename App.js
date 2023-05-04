@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path')
 const checklistRouter = require('./src/routes/Checklist');
+const taskRouter = require('./src/routes/Task');
 const rootRouter = require('./src/routes/index');
 const methodOverride = require('method-override');
 
@@ -18,7 +19,8 @@ app.set('view engine', 'ejs');
 
 
 app.use("/checklists", checklistRouter);
-app.use("/", rootRouter)
+app.use("/checklists", taskRouter.checklistDependent);
+app.use("/", rootRouter);
 
 app.listen(3000, ()=>{
     console.log("o servidor foi iniciado");
