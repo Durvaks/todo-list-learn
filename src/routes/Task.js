@@ -41,8 +41,6 @@ checklistDependentRoute.post("/:id/tasks", async (req, res)=>{
     }
 })
 
-
-
 module.exports = {
     checklistDependent: checklistDependentRoute,
     simple: simpleRouter
