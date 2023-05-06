@@ -55,7 +55,6 @@ router.get('/:id/edit', async(req, res)=>{
     }
 })
 
-
 //ATUALIZA UM DADO PELO ID
 router.put('/:id', async (req, res) => {
     let {name} = req.body.checklist;
@@ -64,7 +63,6 @@ router.put('/:id', async (req, res) => {
         await checklist.updateOne({name});
         res.redirect('/checklists');
     }catch(error){
-        console.log(error)
         let errors = error.erros
         res.status(422).render('checklists/edit', {checklist: {...checklist, errors}})
     }
